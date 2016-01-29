@@ -1,9 +1,12 @@
 package com.example.cjjor_000.myfirstapp;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 
 public class DisplayMessageActivity extends ActionBarActivity {
@@ -12,6 +15,14 @@ public class DisplayMessageActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_message);
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
+        TextView display = new TextView(this);
+        display.setTextSize(40);
+        display.setText(message);
+
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.content);
+        layout.addView(display);
     }
 
     @Override
